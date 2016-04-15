@@ -92,7 +92,7 @@ angular.module('starter.controllers', [])
         user.set("password", $scope.data.password);
         user.set("email", $scope.data.email);
         user.set("bannerID",$scope.data.bannerid);
-        user.set("type",{__type: "Pointer", className: "Teacher", objectId: Parse.User.current()});
+        user.set("type", "Teacher");
           
  
   // other fields can be set just like with Parse.Object
@@ -123,7 +123,7 @@ angular.module('starter.controllers', [])
         user.set("password", $scope.data.password);
         user.set("email", $scope.data.email);
         user.set("bannerID",$scope.data.bannerid);
-         user.set("type",{__type: "Pointer", className: "Student", objectId: Parse.User.current()});
+         user.set("type","Student");
 
           
  
