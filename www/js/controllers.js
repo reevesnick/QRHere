@@ -112,7 +112,7 @@ angular.module('starter.controllers', [])
       alert("Error: " + error.code + " " + error.message);
     }
   });
-    }
+}
     
     $scope.studentSignupEmail = function(){  
 	   //Create a new user on Parse
