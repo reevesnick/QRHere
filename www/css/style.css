@@ -1,0 +1,10 @@
+/* Empty. Add your own CSS if you like */
+
+.background{
+    background-color: #EA9631
+}
+
+.welcome {
+  background: url("../assets/check.png") no-repeat center center fixed;
+  background-size: cover;
+}
