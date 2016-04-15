@@ -58,8 +58,12 @@ angular.module('starter.controllers', [])
     success: function(user) {
       // Do stuff after successful login.
       console.log(user);
+        if (Parse.User.current() == "Teacher")
       $state.go('app.courses');
 
+        else{
+            $state.go('app.student');
+        }
     },
     error: function(user, error) {
       // The login failed. Check error to see why.
@@ -80,7 +84,37 @@ angular.module('starter.controllers', [])
         $scope.data = {};
 
     
-    $scope.signupEmail = function(){  
+    $scope.teacherSignUpEmail  = function(){
+        var user = new Parse.User();
+        user.set("firstname",$scope.data.firstname);
+        user.set("lastname",$scope.data.lastname);
+        user.set("username", $scope.data.username);
+        user.set("password", $scope.data.password);
+        user.set("email", $scope.data.email);
+        user.set("bannerID",$scope.data.bannerid);
+        user.set("type",{__type: "Pointer", className: "Teacher", objectId: Parse.User.current()});
+          
+ 
+  // other fields can be set just like with Parse.Object
+ // user.set("somethingelse", "like this!");
+ 
+  user.signUp(null, {
+    success: function(user) {
+      // Hooray! Let them use the app now.
+      alert("Success! You are now registered");
+      //alert("You Are Now Registered");
+                  $state.go('app.courses');
+
+    },
+    error: function(user, error) {
+      // Show the error message somewhere and let the user try again.
+       
+      alert("Error: " + error.code + " " + error.message);
+    }
+  });
+    }
+    
+    $scope.studentSignupEmail = function(){  
 	   //Create a new user on Parse
         var user = new Parse.User();
         user.set("firstname",$scope.data.firstname);
@@ -89,6 +123,8 @@ angular.module('starter.controllers', [])
         user.set("password", $scope.data.password);
         user.set("email", $scope.data.email);
         user.set("bannerID",$scope.data.bannerid);
+         user.set("type",{__type: "Pointer", className: "Student", objectId: Parse.User.current()});
+
           
  
   // other fields can be set just like with Parse.Object

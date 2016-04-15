@@ -30,9 +30,10 @@
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Banner ID</span>
-                    <input type="password" placeholder="BannerID" ng-model="data.bannerId">
+                    <input type="number" placeholder="BannerID" ng-model="data.bannerId">
                 </label>
-                <button class="button button-dark" ng-click="signupEmail()">Register Me</button>
+                <button class="button button-dark" ng-click="studentSignupEmail()">Student</button>
+                <button class="button button-dark" ng-click="teacherSignupEmail()">Teacher</button>
 
             </ion-list>
         </form>

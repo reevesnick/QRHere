@@ -64,11 +64,11 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-  .state('app.login', {
-      url: '/login',
+  .state('app.student', {
+      url: '/student',
       views: {
         'menuContent': {
-          templateUrl: 'templates/login.html'
+          templateUrl: 'templates/student.html'
         }
       }
     })
@@ -92,5 +92,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/courses');
+  $urlRouterProvider.otherwise('/');
 });
