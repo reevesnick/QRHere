@@ -135,7 +135,7 @@ angular.module('starter.controllers', [])
       // Hooray! Let them use the app now.
       alert("Success! You are now registered");
       //alert("You Are Now Registered");
-                  $state.go('app.courses');
+                  $state.go('app.student');
 
     },
     error: function(user, error) {
