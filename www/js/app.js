@@ -91,6 +91,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       }
     }
   });
+  
+   if (Parse.User.current() == "Student"){
+          $urlRouterProvider.otherwise('/app/student');
+    }
+    
+    else{
+	    $urlRouterProvider.otherwise('/app/courses');
+
+    }
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');
 });
