@@ -1,0 +1,26 @@
+<ion-view title="Attendance" class="background">
+  <ion-nav-bar class="bar-dark">
+    <ion-content padding="true" class="has-header">
+
+      <ion-list>
+
+        <form>
+          <input ng-if="field.format" type="{{field.type}}"
+                 name="{{field.name}}" class="form-control"
+                 ng-class="inputClass"
+                 ng-model="value.val"
+                 ng-required="field.required"
+                 ng-show="field.show"
+                 ng-disabled="field.disabled"
+                 ng-pattern="field.format">
+          </input>
+
+        </form>
+      </ion-list>
+    </ion-content>
+  </ion-nav-bar>
+
+</ion-view>
+
+
+
