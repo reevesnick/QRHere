@@ -1,19 +1,22 @@
 <ion-view title="Attendance" class="background">
   <ion-nav-bar class="bar-dark">
     <ion-content padding="true" class="has-header">
-
+      <ion-nav-back-button class="button-clear" ng-click="goback()">
+        <i class="ion-arrow-left-c"></i>
       <ion-list>
 
         <form>
-          <input ng-if="field.format" type="{{field.type}}"
-                 name="{{field.name}}" class="form-control"
-                 ng-class="inputClass"
-                 ng-model="value.val"
-                 ng-required="field.required"
-                 ng-show="field.show"
-                 ng-disabled="field.disabled"
-                 ng-pattern="field.format">
-          </input>
+
+          <tbody>
+          <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
+            <td>{{item.id}}</td>
+            <td>{{item.Student Name}}</td>
+            <td>{{item.field3}}</td>
+            <td>{{item.field4}}</td>
+            <td>{{item.field5}}</td>
+          </tr>
+          </tbody>
+
 
         </form>
       </ion-list>

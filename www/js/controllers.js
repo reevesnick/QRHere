@@ -160,9 +160,10 @@ angular.module('starter.controllers', [])
     {"Tuesday" : false},
     {"Wednesday": false},
     {"Thursday": false},
-    {"Friday": false}
-  ];
+    {"Friday": false},
 
+  ]
+  required: true;
 
 
 
@@ -200,14 +201,18 @@ angular.module('starter.controllers', [])
                 error: function(Course, error) {
                   if ($scope.coursedata.crn = "crn"){
                     alert("Course Already Exist");
-
                   }
+                  required: "Please Select Days this course is offered."
                     // Execute any logic that should take place if the save fails.
                     // error is a Parse.Error with an error code and message.
                     alert('Failed to create new object, with error code: ' + error.message);
                 }
             });
         };
+
+  $scope.homepage = function (){
+    onButtonClicked();
+  }
 })
 
 
