@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('WelcomeCtrl',function($scope){
-       
+
 })
 
 .controller('LoginCtrl',function($scope,$state, $ionicHistory){
@@ -50,9 +50,9 @@ angular.module('starter.controllers', [])
             $ionicHistory.goBack();
 
     };
-    
+
     $scope.data = {};
-    
+
   $scope.loginEmail = function(){
   	Parse.User.logIn($scope.data.username, $scope.data.password, {
     success: function(user) {
@@ -68,8 +68,8 @@ angular.module('starter.controllers', [])
     error: function(user, error) {
       // The login failed. Check error to see why.
       alert("Error! Please check your information and try again");
-      
-        //var alertPopup = 
+
+        //var alertPopup =
     }
   });
   };
@@ -80,10 +80,10 @@ angular.module('starter.controllers', [])
             $ionicHistory.goBack();
 
     };
-    
+
         $scope.data = {};
 
-    
+
     $scope.teacherSignUpEmail  = function(){
         var user = new Parse.User();
         user.set("firstname",$scope.data.firstname);
@@ -93,11 +93,11 @@ angular.module('starter.controllers', [])
         user.set("email", $scope.data.email);
         user.set("bannerID",$scope.data.bannerid);
         user.set("type", "Teacher");
-          
- 
+
+
   // other fields can be set just like with Parse.Object
  // user.set("somethingelse", "like this!");
- 
+
   user.signUp(null, {
     success: function(user) {
       // Hooray! Let them use the app now.
@@ -108,13 +108,13 @@ angular.module('starter.controllers', [])
     },
     error: function(user, error) {
       // Show the error message somewhere and let the user try again.
-       
+
       alert("Error: " + error.code + " " + error.message);
     }
   });
 }
-    
-    $scope.studentSignupEmail = function(){  
+
+    $scope.studentSignupEmail = function(){
 	   //Create a new user on Parse
         var user = new Parse.User();
         user.set("firstname",$scope.data.firstname);
@@ -123,13 +123,13 @@ angular.module('starter.controllers', [])
         user.set("password", $scope.data.password);
         user.set("email", $scope.data.email);
         user.set("bannerID",$scope.data.bannerid);
-         user.set("type","Student");
+        user.set("type","Student");
 
-          
- 
+
+
   // other fields can be set just like with Parse.Object
  // user.set("somethingelse", "like this!");
- 
+
   user.signUp(null, {
     success: function(user) {
       // Hooray! Let them use the app now.
@@ -140,17 +140,33 @@ angular.module('starter.controllers', [])
     },
     error: function(user, error) {
       // Show the error message somewhere and let the user try again.
-       
+
       alert("Error: " + error.code + " " + error.message);
     }
   });
   };
- 
-    
-       
+
+
+
 })
 
 .controller('CoursesCtrl',function($scope,$state){
+
+  $scope.coursedata = {};
+
+
+  $scope.daycheckbox = [
+    {"Monday" : false},
+    {"Tuesday" : false},
+    {"Wednesday": false},
+    {"Thursday": false},
+    {"Friday": false}
+  ];
+
+
+
+
+
        $scope.testServer = function(){
             var TestObject = Parse.Object.extend("TestObject");
             var testObject = new TestObject();
@@ -158,19 +174,22 @@ angular.module('starter.controllers', [])
                 alert("yay! it worked");
             });
         };
-    
-        $scope.coursedata = {};
 
-    
+
+
         $scope.submit = function () {
             var Course = Parse.Object.extend("Course");
             var course = new Course();
 
+
+
             course.set("CourseName", $scope.coursedata.CourseName);
             course.set("crn", $scope.coursedata.crn);
             course.set("SectionNumber", $scope.coursedata.SectionNumber);
-           // course.set(courseday,[false, false, false, false, false]);
-
+            course.set("DayArray", $scope.daycheckbox.checked );
+          if (course.equals("objectId",course)){
+            alert("Course Already Exist");
+          }
             course.save(null, {
                 success: function(Course) {
                     // Execute any logic that should take place after the object is saved.
@@ -179,6 +198,10 @@ angular.module('starter.controllers', [])
                     ('New object created with objectId: ' + Course.id);
                 },
                 error: function(Course, error) {
+                  if ($scope.coursedata.crn = "crn"){
+                    alert("Course Already Exist");
+
+                  }
                     // Execute any logic that should take place if the save fails.
                     // error is a Parse.Error with an error code and message.
                     alert('Failed to create new object, with error code: ' + error.message);
@@ -186,6 +209,13 @@ angular.module('starter.controllers', [])
             });
         };
 })
+
+
+
+
+
+
+
 
 .controller('StudentCtrl', function($scope,$state,$cordovaBarcodeScanner){
 	$scope.scanBarcode = function() {
@@ -212,3 +242,5 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+
+

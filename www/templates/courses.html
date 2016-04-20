@@ -9,31 +9,40 @@
                     <span class="input-label">Course Name</span>
                     <input type="text" placeholder="Class Name" ng-model="coursedata.CourseName">
                 </label>
-                <label class="item item-input">
-                    <span class="input-label">CRN</span>
-                    <input type="number" placeholder="CRN" ng-model="coursedata.crn">
-                </label>
+
              <label class="item item-input">
                     <span class="input-label">Section Number</span>
-                    <input type="text" placeholder="coursedata.Section Number" ng-model="SectionNumber">
+                    <input type="text" placeholder="Section Number" ng-model="SectionNumber">
                 </label>
-        <br>
-
-  <ion-checkbox ng-model="isChecked">Monday</ion-checkbox>
-  <ion-checkbox ng-model="isChecked">Tuesday</ion-checkbox>
-  <ion-checkbox ng-model="isChecked">Wednesday</ion-checkbox>
-  <ion-checkbox ng-model="filter.blue">Thursday</ion-checkbox>
-  <ion-checkbox ng-model="filter.blue">Friday</ion-checkbox>
-
+            <label class="item item-input">
+                    <span class="input-label">CRN</span>
+                    <input type="number" placeholder="CRN" ng-model="coursedata.crn">
+            </label>
+              <br>
+              <br>
+      <h5>What days is your class offered?</h5>
+  <ion-checkbox ng-model="daycheckbox.checked.Monday">Monday</ion-checkbox>
+  <ion-checkbox ng-model="daycheckbox.checked.Tuesday">Tuesday</ion-checkbox>
+  <ion-checkbox ng-model="daycheckbox.checked.Wednesday">Wednesday</ion-checkbox>
+  <ion-checkbox ng-model="daycheckbox.checked.Thursday">Thursday</ion-checkbox>
+  <ion-checkbox ng-model="daycheckbox.checked.Friday">Friday</ion-checkbox>
+      <br>
+      <br>
 
          <button class="button bar-black" ng-click="submit()">Continue</button>
         <button class="button bar-black" ng-click="">+Add Another Course</button>
         <button class="button bar-black" ng-click="testServer()">Test Parse Server</button>
-
+<br>
 
 
     </form>
+  <script>
+
+    ;</script>
         </ion-list>
       </ion-content>
     </ion-nav-bar>
+
 </ion-view>
+
+
