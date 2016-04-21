@@ -211,7 +211,7 @@ angular.module('starter.controllers', [])
         }
 
 
-
+})
 
 
 
@@ -243,8 +243,6 @@ $scope.scanBarcode = function() {
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-
-
   .controller('CourseListCtrl',function($scope,$state){
     $scope.showCourseList = function(){
 
@@ -271,7 +269,7 @@ $scope.scanBarcode = function() {
     $scope.homepage = function (){
       onButtonClicked();
     }
-  })
+  });
 
 
 
