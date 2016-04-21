@@ -175,7 +175,8 @@ angular.module('starter.controllers', [])
                 alert("yay! it worked");
             });
         };
-
+		
+		//$scope.
 
 
         $scope.submit = function () {
@@ -195,6 +196,8 @@ angular.module('starter.controllers', [])
                 success: function(Course) {
                     // Execute any logic that should take place after the object is saved.
                     alert('Your class has been uploaded');
+                                      $state.go('app.courselist');
+
 
                     ('New object created with objectId: ' + Course.id);
                 },
@@ -267,7 +270,7 @@ $scope.scanBarcode = function() {
       });
     }
     $scope.homepage = function (){
-      onButtonClicked();
+      $state.go('app.course')//onButtonClicked();
     }
   });
 
