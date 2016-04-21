@@ -20,7 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       StatusBar.styleDefault();
     }
   });
-    
+
    Parse.initialize("myAppId");
    Parse.serverURL = 'http://45.55.141.129:1337/parse';
 
@@ -34,19 +34,19 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       templateUrl: 'templates/welcome.html',
       controller:'WelcomeCtrl'
   })
-  
+
     .state('login',{
       url: '/login',
       templateUrl: 'templates/login.html',
       controller:'LoginCtrl'
   })
-  
+
     .state('sinup',{
       url: '/signup',
       templateUrl: 'templates/signup.html',
       controller:'SignupCtrl'
   })
-  
+
     .state('app', {
     url: '/app',
     abstract: true,
@@ -63,6 +63,16 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova'])
       }
     }
   })
+
+    .state('app.courselist', {
+      url: '/CourseList',
+      views:{
+        'menuContent': {
+          templateUrl:'templates/CourseList.html',
+          controller: "CourseListCtrl"
+        }
+      }
+    })
 
   .state('app.student', {
       url: '/student',

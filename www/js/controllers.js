@@ -101,7 +101,7 @@ angular.module('starter.controllers', [])
   user.signUp(null, {
     success: function(user) {
       // Hooray! Let them use the app now.
-      alert("Success! You are now registered");
+      alert("You are now registered");
       //alert("You Are Now Registered");
                   $state.go('app.courses');
 
@@ -208,13 +208,7 @@ angular.module('starter.controllers', [])
                     alert('Failed to create new object, with error code: ' + error.message);
                 }
             });
-        };
-
-  $scope.homepage = function (){
-    onButtonClicked();
-  }
-})
-
+        }
 
 
 
@@ -250,6 +244,37 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
+
+
+
+  .controller('CourseListCtrl',function($scope,$state){
+    $scope.showCourseList = function(){
+
+      $scope.coursedata = {};
+
+      var CourseList = Parse.Object.extend("CourseList");
+      var query = new Parse.Query(Course);
+      query.equalTo($scope.coursedata.CourseName,$scope.coursedata.crn,$scope.coursedata.DayArray);
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            var object = results[i];
+            myScores+='<tr><td>' + object.get($scope.coursedata.CourseName) + '</td><td>' + object.get('score') + '</td></tr>';
+          }
+          (function($) {
+            $('#coursetable').append(myScores);
+          })(jQuery);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    }
+    $scope.homepage = function (){
+      onButtonClicked();
+    }
+  })
+
 
 

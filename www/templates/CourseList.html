@@ -7,17 +7,29 @@
 
         <form>
 
-          <tbody>
-          <tr ng-repeat="item in pagedItems[currentPage] | orderBy:sortingOrder:reverse">
-            <td>{{item.id}}</td>
-            <td>{{item.Student Name}}</td>
-            <td>{{item.field3}}</td>
-            <td>{{item.field4}}</td>
-            <td>{{item.field5}}</td>
-          </tr>
-          </tbody>
 
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+          <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+          <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+          <link rel="stylesheet" href="/resources/demos/style.css">
+          <script>
+            $(function() {
+              $( "#datepicker" ).datepicker();
+            });
+          </script>
+          </head>
+          <body>
 
+          <p>Date: <input type="text" id="datepicker"></p>
+          <table id="coursetable">
+            <tr>
+              <th>Course Name</th>
+              <th>CRN</th>
+              <th>Days Offered</th>
+            </tr>
+          </table>
+
+          <button class="button bar-black" ng-click="showCourseList()">Continue</button>
         </form>
       </ion-list>
     </ion-content>
