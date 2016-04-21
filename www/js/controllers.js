@@ -217,18 +217,21 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('StudentCtrl', function($scope,$cordovaBarcodeScanner){
-$scope.scanBarcode = function() {
-        $cordovaBarcodeScanner.scan().then(function(imageData) {
-            alert(imageData.text);
-            console.log("Barcode Format -> " + imageData.format);
-            console.log("Cancelled -> " + imageData.cancelled);
-        }, function(error) {
-            console.log("An error happened -> " + error);
-        });
-    };
-    
-})
+.controller('StudentCtrl',['$scope','$cordovaBarcodeScanner','$ionicPlatform', function($scope,$cordovaBarcodeScanner,$ionicPlatform){
+	    $scope.currentUser = Parse.User.current();
+
+	
+	$scope.scanBarcode = function(){
+		 $ionicPlatform.ready(function() {
+            $cordovaBarcodeScanner.scan().then(function(barcodeData) {
+               alert(JSON.stringify(barcodeData));
+            }, function(error) {
+               alert(JSON.stringify(error));
+            });
+         });
+	}
+
+}])
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [

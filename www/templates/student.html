@@ -1,7 +1,19 @@
 <ion-view title="Student" class="background">
   <ion-nav-bar class="bar-dark">
     <ion-content padding="true" class="has-header">
+    <center>
+
+             <p style="color:white;">Welcome:{{currentUser.get('firstname')}}
+                    <span style="color:white;margin-right:1.25em;">{{currentUser.get('lastname')}}</span>
+                     <p style="color: white;">Username: {{currentUser.get('username')}}</p>
+
+                    <p style="color: white;">Banner ID: {{currentUser.get('bannerId')}}</p>
+                    
+                    
+                    
 	            <button class="button bar-black" ng-click="scanBarcode()">Start Scan</button>
+             </p>
+    </center>
       </ion-content>
     </ion-nav-bar>
 </ion-view>
