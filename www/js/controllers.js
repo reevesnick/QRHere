@@ -217,8 +217,8 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('StudentCtrl', function($scope,$state,$cordovaBarcodeScanner){
-	$scope.scanBarcode = function() {
+.controller('StudentCtrl', function($scope,$cordovaBarcodeScanner){
+$scope.scanBarcode = function() {
         $cordovaBarcodeScanner.scan().then(function(imageData) {
             alert(imageData.text);
             console.log("Barcode Format -> " + imageData.format);
@@ -227,6 +227,7 @@ angular.module('starter.controllers', [])
             console.log("An error happened -> " + error);
         });
     };
+    
 })
 
 .controller('PlaylistsCtrl', function($scope) {
