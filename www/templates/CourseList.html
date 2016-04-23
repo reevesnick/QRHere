@@ -1,9 +1,11 @@
-<ion-view title="Attendance" class="background">
+<ion-view title="Courses" class="background">
   <ion-nav-bar class="bar-dark">
     <ion-content padding="true" class="has-header">
-      <ion-nav-back-button class="button-clear" ng-click="goback()">
-        <i class="ion-arrow-left-c"></i>
-      <ion-list>
+
+      <ion-nav-back-button class="button-clear" ng-click="goback()"><i class="ion-arrow-left-c"></i></ion-nav-back-button>
+
+
+  <ion-list>
 
         <form>
 
@@ -12,28 +14,45 @@
           <script src="//code.jquery.com/jquery-1.10.2.js"></script>
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
           <link rel="stylesheet" href="/resources/demos/style.css">
-          <script>
-            $(function() {
-              $( "#datepicker" ).datepicker();
-            });
-          </script>
-          </head>
-          <body>
 
-          <p>Date: <input type="text" id="datepicker"></p>
-          <table id="coursetable">
-            <tr>
-              <th>Course Name</th>
-              <th>CRN</th>
-              <th>Days Offered</th>
-            </tr>
-          </table>
 
-          <button class="button bar-black" ng-click="showCourseList()">Continue</button>
+          <body ng-controller="MyCtrl as ctrl">
+          <ion-header-bar class="bar-stable">
+            <h1 class="title">Courses</h1>
+          </ion-header-bar>
+
+          <ion-content>
+            <div class="row header">
+              <div class="col">Course Name</div>
+              <div class="col"> Days offered</div>
+              <div class="col">Edit</div>
+
+            </div>
+            <div class="row" ng-repeat="data in ctrl.data">
+              <div class="col">{{data.CourseName}}</div>
+              <div class="col">{{data.Daysoffered}}</div>
+              <div class="col"><button class="button" ng-click="ctrl.add($index)">Edit</button></div>
+            </div>
+          </ion-content>
+
+
+
+
+          </body>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <button class="button bar-black"   ng-click="showCourseList()">Add new Course</button>
+        </body>
+
         </form>
-      </ion-list>
-    </ion-content>
+
+  </ion-list>
   </ion-nav-bar>
+</ion-view>
 
 </ion-view>
 
