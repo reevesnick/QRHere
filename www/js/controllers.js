@@ -248,7 +248,7 @@ $scope.scanBarcode = function() {
 .controller('PlaylistCtrl',function($scope, $stateParams) {
 })
 
-  .controller('CourseListCtrl',['$scope','$stateParams','CourseList', function($scope,$state,CourseList){
+.controller('CourseListCtrl',['$scope','$stateParams','CourseList', function($scope,$state,CourseList){
 	  CourseList.getAll().success(function(data){
 		$scope.items = data.results;	
 	}).then(function(result) {
@@ -266,13 +266,13 @@ $scope.scanBarcode = function() {
 
       },
 
-    ]
+    ]}
 
 
     function add(index) {
       window.alert("Added: " + index);
     }
-  });
+  }]);
 
 
 
