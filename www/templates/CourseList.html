@@ -3,11 +3,13 @@
     <ion-content padding="true" class="has-header">
       <ion-nav-back-button class="button-clear" ng-click="goback()">
         <i class="ion-arrow-left-c"></i>
-      <ion-list>
+	  	<div class="list" ng-repeat="item in items | orderBy: '-createdAt'" item="coursesitem" href="#/coursesitem/create/{{item.objectId}}">
 
-        <form>
+      <h2>{{item.CourseName}}</h2>
+      <p>{{item.Instructor}}</p>
+	</div>
 
-
+<!--
           <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
           <script src="//code.jquery.com/jquery-1.10.2.js"></script>
           <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
@@ -19,7 +21,7 @@
           </script>
           </head>
           <body>
-
+-->
           <p>Date: <input type="text" id="datepicker"></p>
           <table id="coursetable">
             <tr>

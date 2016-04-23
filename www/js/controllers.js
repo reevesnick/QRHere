@@ -58,9 +58,9 @@ angular.module('starter.controllers', [])
     success: function(user) {
       // Do stuff after successful login.
       console.log(user);
-        if (Parse.User.current() == "Teacher")
+        if (user == "Teacher"){
       $state.go('app.courses');
-
+}
         else{
             $state.go('app.student');
         }
@@ -189,7 +189,9 @@ angular.module('starter.controllers', [])
             course.set("crn", $scope.coursedata.crn);
             course.set("SectionNumber", $scope.coursedata.SectionNumber);
             course.set("DayArray", $scope.daycheckbox.checked );
-          if (course.equals("objectId",course)){
+            course.set("Instructor",Parse.User.current());
+
+          if (course.equals("crn",course)){
             alert("Course Already Exist");
           }
             course.save(null, {
@@ -243,10 +245,16 @@ $scope.scanBarcode = function() {
   ];
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('PlaylistCtrl',function($scope, $stateParams) {
 })
 
-  .controller('CourseListCtrl',function($scope,$state){
+  .controller('CourseListCtrl',['$scope','$stateParams','CourseList', function($scope,$state,CourseList){
+	  CourseList.getAll().success(function(data){
+		$scope.items = data.results;	
+	}).then(function(result) {
+    _this.breweries = result.data.breweries
+  })
+	  
     $scope.showCourseList = function(){
 
       $scope.coursedata = {};
@@ -272,7 +280,7 @@ $scope.scanBarcode = function() {
     $scope.homepage = function (){
       $state.go('app.course')//onButtonClicked();
     }
-  });
+  }]);
 
 
 
