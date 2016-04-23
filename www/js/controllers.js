@@ -175,7 +175,7 @@ angular.module('starter.controllers', [])
                 alert("yay! it worked");
             });
         };
-		
+
 		//$scope.
 
 
@@ -231,7 +231,7 @@ $scope.scanBarcode = function() {
             console.log("An error happened -> " + error);
         });
     };
-    
+
 })
 
 .controller('PlaylistsCtrl', function($scope) {
@@ -257,30 +257,22 @@ $scope.scanBarcode = function() {
 	  
     $scope.showCourseList = function(){
 
-      $scope.coursedata = {};
+    ctrl.add = add;
+    ctrl.data = [
+      {
+        CourseName: $scope.coursedata.CourseName,
+        Daysoffered:$scope.coursedata.DayArray,
+        limit: 500,
 
-      var CourseList = Parse.Object.extend("CourseList");
-      var query = new Parse.Query(Course);
-      query.equalTo($scope.coursedata.CourseName,$scope.coursedata.crn,$scope.coursedata.DayArray);
-      query.find({
-        success: function(results) {
-          for (var i = 0; i < results.length; i++) {
-            var object = results[i];
-            myScores+='<tr><td>' + object.get($scope.coursedata.CourseName) + '</td><td>' + object.get('score') + '</td></tr>';
-          }
-          (function($) {
-            $('#coursetable').append(myScores);
-          })(jQuery);
-        },
-        error: function(error) {
-          alert("Error: " + error.code + " " + error.message);
-        }
-      });
+      },
+
+    ]
+
+
+    function add(index) {
+      window.alert("Added: " + index);
     }
-    $scope.homepage = function (){
-      $state.go('app.course')//onButtonClicked();
-    }
-  }]);
+  });
 
 
 
