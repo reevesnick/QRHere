@@ -113,4 +113,55 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova','ionic-dat
     }
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/');
+})
+
+
+//Factory - Sevices Test
+.factory('CourseList',['$http','PARSE_CREDENTIALS',function($http,PARSE_CREDENTIALS){
+	
+    return {
+        getAll:function(){
+            return $http.get('http://45.55.141.129:1337/parse/classes/Course?include=Instructor',{
+                headers:{
+                    'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
+                    'Content-Type':'application/json'                     
+                    }
+            });
+        },
+        get:function(id){
+            return $http.get('http://45.55.141.129:1337/parse/classes/Course/'+id,{
+                headers:{
+                    'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
+                    'Content-Type':'application/json'               
+                     }
+            });
+        },
+        create:function(data){
+            return $http.post('http://45.55.141.129:1337/parse/classes/Course',data,{
+                headers:{
+                    'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
+                    'Content-Type':'application/json'
+                }
+            });
+        },
+        edit:function(id,data){
+            return $http.put('http://45.55.141.129:1337/parse/classes/Course/'+id,data,{
+                headers:{
+                    'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
+                    'Content-Type':'application/json'
+                }
+            });
+        },
+        delete:function(id){
+            return $http.delete('http://45.55.141.129:1337/parse/classes/Course/'+id,{
+                headers:{
+                    'X-Parse-Application-Id': PARSE_CREDENTIALS.APP_ID,
+                    'Content-Type':'application/json'
+                }
+            });
+        }
+    }
+    
+}]).value('PARSE_CREDENTIALS',{
+    APP_ID: 'myAppId'
 });

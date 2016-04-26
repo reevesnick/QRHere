@@ -1,8 +1,6 @@
-angular.module('starter.services', [])
+angular.module('QRHere.services', [])
 
-.factory('CourseList', function(){
-	
-	.factory('CampusEvents',['$http','PARSE_CREDENTIALS',function($http,PARSE_CREDENTIALS){
+.factory('CourseList',['$http','PARSE_CREDENTIALS',function($http,PARSE_CREDENTIALS){
 	
     return {
         getAll:function(){
@@ -46,9 +44,5 @@ angular.module('starter.services', [])
     }
     
 }]).value('PARSE_CREDENTIALS',{
-    APP_ID: 'myAppId',
-})
-	
-})
-
-;
+    APP_ID: 'myAppId'
+});

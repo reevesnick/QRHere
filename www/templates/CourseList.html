@@ -3,55 +3,37 @@
     <ion-content padding="true" class="has-header">
 
       <ion-nav-back-button class="button-clear" ng-click="goback()"><i class="ion-arrow-left-c"></i></ion-nav-back-button>
+      <ion-list>
+      <ion-item ng-repeat="item in items" item="courseitems"
+	      			href="#/courseitems/create/{{item.objectId}}">
 
-
-  <ion-list>
-
-        <form>
-
-
-          <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-          <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-          <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-          <link rel="stylesheet" href="/resources/demos/style.css">
-
-
-          <body ng-controller="MyCtrl as ctrl">
-          <ion-header-bar class="bar-stable">
-            <h1 class="title">Courses</h1>
-          </ion-header-bar>
-
-          <ion-content>
+      <h2>{{item.CourseName}}</h2>
+      <p>Instructor: {{item.Instructor.firstname}} <span>{{item.Instructor.lastname}}</span> </p>
+      <p>{{item.DayArray}}</p>
+      
+</ion-item>
+      </ion-list>
+      
+<!--
+      <ion-content>
             <div class="row header">
               <div class="col">Course Name</div>
               <div class="col"> Days offered</div>
               <div class="col">Edit</div>
 
             </div>
-            <div class="row" ng-repeat="data in ctrl.data">
-              <div class="col">{{data.CourseName}}</div>
-              <div class="col">{{data.Daysoffered}}</div>
+            <div class="row" ng-repeat="item in items" item="courseitems"
+	      			href="#/courseitems/create/{{item.objectId}}">
+              <div class="col">{{item.CourseName}}</div>
+              <div class="col">{{item.DayArray}}</div>
               <div class="col"><button class="button" ng-click="ctrl.add($index)">Edit</button></div>
             </div>
           </ion-content>
-
-
-
-
-          </body>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <button class="button bar-black"   ng-click="showCourseList()">Add new Course</button>
-        </body>
-
-        </form>
-
-  </ion-list>
+-->
   </ion-nav-bar>
+  
+  
+ 
 </ion-view>
 
 </ion-view>

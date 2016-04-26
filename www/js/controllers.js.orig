@@ -248,26 +248,41 @@ $scope.scanBarcode = function() {
 .controller('PlaylistCtrl',function($scope, $stateParams) {
 })
 
-.controller('CourseListCtrl',['$scope','$stateParams','CourseList', function($scope,$state,CourseList){
-	
-	$scope.showQR = function(){
-		var qrcode = new QRCode("qrcode", {
-		text: "http://jindo.dev.naver.com/collie",
-		width: 128,
-		height: 128,
-		colorDark : "#000000",
-		colorLight : "#ffffff",
-		correctLevel : QRCode.CorrectLevel.H
-		});
-	}
-	
+<<<<<<< HEAD
+  .controller('CourseListCtrl',['$scope','$stateParams','CourseList', function($scope,$state,CourseList){
 	  CourseList.getAll().success(function(data){
 		$scope.items = data.results;	
 	}).then(function(result) {
-   // _this.breweries = result.data.breweries;
+    _this.breweries = result.data.breweries
   })
 	  
     $scope.showCourseList = function(){
+
+      $scope.coursedata = {};
+
+      var CourseList = Parse.Object.extend("CourseList");
+      var query = new Parse.Query(Course);
+      query.equalTo($scope.coursedata.CourseName,$scope.coursedata.crn,$scope.coursedata.DayArray);
+      query.find({
+        success: function(results) {
+          for (var i = 0; i < results.length; i++) {
+            var object = results[i];
+            myScores+='<tr><td>' + object.get($scope.coursedata.CourseName) + '</td><td>' + object.get('score') + '</td></tr>';
+          }
+          (function($) {
+            $('#coursetable').append(myScores);
+          })(jQuery);
+        },
+        error: function(error) {
+          alert("Error: " + error.code + " " + error.message);
+        }
+      });
+    }
+    $scope.homepage = function (){
+      $state.go('app.course')//onButtonClicked();
+=======
+  .controller('CourseListCtrl',function($scope,$state){
+    var ctrl = this;
 
     ctrl.add = add;
     ctrl.data = [
@@ -278,11 +293,12 @@ $scope.scanBarcode = function() {
 
       },
 
-    ]}
+    ]
 
 
     function add(index) {
       window.alert("Added: " + index);
+>>>>>>> c0b40b9629366f385ac37ec54e591a5f47430714
     }
   }]);
 
