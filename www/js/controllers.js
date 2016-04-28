@@ -50,6 +50,8 @@ angular.module('starter.controllers', [])
             $ionicHistory.goBack();
 
     };
+    
+    var currentuser = Parse.User.current();
 
     $scope.data = {};
 
@@ -58,7 +60,7 @@ angular.module('starter.controllers', [])
     success: function(user) {
       // Do stuff after successful login.
       console.log(user);
-        if (user == "Teacher"){
+        if (currentuser == 'Teacher'){
       $state.go('app.courses');
 }
         else{
@@ -284,7 +286,14 @@ $scope.scanBarcode = function() {
     function add(index) {
       window.alert("Added: " + index);
     }
-  }]);
+  }])
+  
+  .controller('CourseDetailCtrl',['$scope','CourseList','$stateParams',function($scope, CourseList, $stateParams){
+	  	CourseList.get($stateParams.objectId, function(course){
+		$scope.course = course;
+	})
+  }])
+  ;
 
 
 

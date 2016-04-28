@@ -73,6 +73,16 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova','ionic-dat
         }
       }
     })
+    
+    .state('app.course-detail', {
+	 url:'/CourseList/:objectId',
+	 views: {
+		 'menuContent' :{
+			 templateUrl: 'templates/course-detail.html',
+			 controller: 'CourseDetailCtrl'
+		 }
+	 }
+ })
 
   .state('app.student', {
       url: '/student',
