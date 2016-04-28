@@ -31,3 +31,22 @@ body {
 .row:last-child .col {
   border-bottom: solid 1px grey;
 }
+
+div.homeimage {
+  width: 30%;
+  border-radius: 45%;
+  border-color: #69717d;
+  content: url(http://www.learningsupport.org/courses/grabbers/handsup.jpg);
+}
+p.qrhere {
+  font-family: "Monaco", monospace;
+  font-size: 1.875em;
+}
+.center {
+  margin: auto;
+  width: 40%;
+  padding: 10px;
+}
+.blackback {
+  background-color: #e6b500;
+}
