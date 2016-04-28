@@ -32,7 +32,7 @@ angular.module('starter', ['ionic', 'starter.controllers','ngCordova','ionic-dat
   .state('welcome',{
       url: '/',
       templateUrl: 'templates/welcome.html',
-      controller:'WelcomeCtrl'
+      controller:'LoginCtrl'
   })
 
     .state('login',{

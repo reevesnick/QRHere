@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
 
     };
     
-    var currentuser = Parse.User.current();
+    //var currentuser = Parse.User.current();
 
     $scope.data = {};
 
@@ -60,7 +60,7 @@ angular.module('starter.controllers', [])
     success: function(user) {
       // Do stuff after successful login.
       console.log(user);
-        if (currentuser == 'Teacher'){
+        if (Parse.User.current() == 'Teacher'){
       $state.go('app.courses');
 }
         else{
