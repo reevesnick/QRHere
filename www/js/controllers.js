@@ -51,7 +51,7 @@ angular.module('starter.controllers', [])
 
     };
     
-    //var currentuser = Parse.User.current();
+    var currentuser = Parse.User.current();
 
     $scope.data = {};
 
@@ -60,7 +60,7 @@ angular.module('starter.controllers', [])
     success: function(user) {
       // Do stuff after successful login.
       console.log(user);
-        if (Parse.User.current() == 'Teacher'){
+        if (currentuser == 'Teacher'){
       $state.go('app.courses');
 }
         else{
@@ -193,7 +193,7 @@ angular.module('starter.controllers', [])
             course.set("DayArray", $scope.daycheckbox.checked );
             course.set("Instructor",Parse.User.current());
 
-          if (course.equals("crn",course)){
+          if (course.equalTo("crn",course)){
             alert("Course Already Exist");
           }
             course.save(null, {
@@ -225,14 +225,28 @@ angular.module('starter.controllers', [])
 
 .controller('StudentCtrl', function($scope,$cordovaBarcodeScanner){
 $scope.scanBarcode = function() {
+	/*
+	 $cordovaBarcodeScanner.scan(function (result) {  
+                    alert("We got a barcode\n" +  
+                        "Result: " + result.text + "\n" +  
+                        "Format: " + result.format + "\n" +  
+                        "Cancelled: " + result.cancelled);  
+                },  
+                function (error) {  
+                    alert("Scanning failed: " + error);  
+                });
+	*/
+	
         $cordovaBarcodeScanner.scan().then(function(imageData) {
-	        window.open(imageData.text,'_self', 'location=no');
-           // alert(imageData.text);
+	        window.open(imageData.text,'_system', 'location=yes');
+	        alert("You will be referred to a web page to Verify your status.");
+			//alert(imageData.text);
             console.log("Barcode Format -> " + imageData.format);
             console.log("Cancelled -> " + imageData.cancelled);
         }, function(error) {
             console.log("An error happened -> " + error);
         });
+        
     };
 
 })
