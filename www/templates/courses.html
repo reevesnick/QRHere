@@ -7,16 +7,16 @@
     <form>
                 <label class="item item-input">
                     <span class="input-label">Course Name</span>
-                    <input type="text" placeholder="Class Name" ng-model="coursedata.CourseName">
+                    <input type="text" placeholder="Class Name" ng-model="coursedata.CourseName" required>
                 </label>
 
              <label class="item item-input">
                     <span class="input-label">Section Number</span>
-                    <input type="text" placeholder="Section Number" ng-model="SectionNumber">
+                    <input type="text" placeholder="Section Number" ng-model="SectionNumber" ng-maxlength="3" ng-minlength="3">
                 </label>
             <label class="item item-input">
                     <span class="input-label">CRN</span>
-                    <input type="number" placeholder="CRN" ng-model="coursedata.crn">
+                    <input type="number" placeholder="CRN" ng-model="coursedata.crn" ng-maxlength="5" ng-minlength="5">
             </label>
               <br>
               <br>
