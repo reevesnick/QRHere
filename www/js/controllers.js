@@ -238,7 +238,7 @@ $scope.scanBarcode = function() {
 	*/
 	
         $cordovaBarcodeScanner.scan().then(function(imageData) {
-	        window.open(imageData.text,'_system', 'location=yes');
+	        window.open(imageData.text,'_blank', 'location=yes');
 	        alert("You will be referred to a web page to Verify your status.");
 			//alert(imageData.text);
             console.log("Barcode Format -> " + imageData.format);

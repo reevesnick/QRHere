@@ -11,28 +11,27 @@
   <p class="qrhere">Sign Into QRHere!</p>
   <div class="homeimage" alt="Hand Raised" ></div>
 
-  <div class="wrapper">
+  <div>
     <div class="text-center center">
       <form>
         <ion-list>
           <label class="item item-input">
-            <span class="input-label">Username</span>
-            <input type="text" placeholder="enter your username..." ng-model="data.username">
+           
+            <input type="text" placeholder="Username" ng-model="data.username">
           </label>
           <label class="item item-input">
-            <span class="input-label">Password</span>
-            <input type="password" placeholder="enter your password..." ng-model="data.password">
+           
+            <input type="password" placeholder="Password" ng-model="data.password">
           </label>
         </ion-list>
         <br>
         <br>
-        <button class="button button-dark" ng-click="loginEmail()">Sing In</button>
+        <button class="button button-dark" ng-click="loginEmail()">Sign In</button>
         <!--<button class="button bar-black" ng-click="forgetPasswordButton()">Login As Student </button>-->
       </form>
     </div>
     <br>
-    <br>
-    <br>
+    
     <a href = "#/signup" class="button button-dark">
       Sign Up
     </a>
